@@ -84,13 +84,13 @@ class BlogIndexData extends Job implements SelfHandling
     	$page_image = $tag->page_image ?: config('meblog.page_image');
     
     	return [
-	    	'title' => $tag->title,
+	    	'title' => $tag->title,		//虽然现在的title先登记的是tag的，但在blog.layouts.post会转为文章的title
 	    	'subtitle' => $tag->subtitle,
 	    	'posts' => $posts,
 	    	'page_image' => $page_image,
 	    	'tag' => $tag,
 	    	'reverse_direction' => $reverse_direction,
-	    	'meta_description' => $tag->meta_description ?: config('blog.description'),
+	    	'meta_description' => $tag->meta_description ?: config('meblog.description'),
     	];
     }
 }

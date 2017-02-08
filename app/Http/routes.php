@@ -53,6 +53,11 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'auth'], function (){  //ä
 Route::get('/auth/login', 'Auth\AuthController@getLogin');
 Route::post('/auth/login', 'Auth\AuthController@postLogin');
 Route::get('/auth/logout', 'Auth\AuthController@getLogout');
+
+// Setting Message
+Route::get('/setting', 'SettingController@index');
+Route::post('/setting/userinfo', 'SettingController@modifyUserInfo');
+Route::post('/setting/passwordinfo', 'SettingController@modifyPassword');
 	
 	
 	

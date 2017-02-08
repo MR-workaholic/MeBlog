@@ -18,9 +18,10 @@ class BlogController extends Controller
 	{
 		$tag = $request->get('tag');
 		$data = $this->dispatch(new BlogIndexData($tag));
-		$layout = $tag ? Tag::layout($tag) : 'blog.layouts.index';
+		$tags = Tag::all();
 		
-		return view($layout, $data);
+		$layout = $tag ? Tag::layout($tag) : 'blog.layouts.index';
+		return view($layout, $data)->withTags($tags);
 		
 // 		//  old method
 // 		$posts = Post::where('published_at', '<=', Carbon::now())
@@ -38,8 +39,9 @@ class BlogController extends Controller
 		if ($tag) {
 			$tag = Tag::whereTag($tag)->firstOrFail();
 		}
+		$tags = Tag::all();
 		
-		return view($post->layout, compact('post', 'tag', 'slug'));
+		return view($post->layout, compact('post', 'tag', 'slug', 'tags'));
 		
 		// old method
 // 		$post = Post::whereSlug($slug)->firstOrFail();
