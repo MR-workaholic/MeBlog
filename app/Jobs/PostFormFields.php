@@ -87,6 +87,8 @@ class PostFormFields extends Job implements SelfHandling
     	$fieldNames = array_keys(array_except($fields, ['tags']));
     
     	$fields = ['id' => $id];
+    	// 你会发现content，publish_date与publish_time是没有的，其实在Post.php中提供了相应的函数
+    	// 如：getContentAttribute
     	foreach ($fieldNames as $field) {
     		$fields[$field] = $post->{$field};
     	}

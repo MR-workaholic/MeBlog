@@ -14,6 +14,7 @@
   {{-- Styles --}}
   <link href="/assets/css/blog.css" rel="stylesheet">
   @yield('styles')
+  @yield('headscripts')
 
   {{-- HTML5 Shim and Respond.js for IE8 support --}}
   <!--[if lt IE 9]>

@@ -14,7 +14,7 @@ class Post extends Model
 	protected $fillable = [
 		'title', 
 		'subtitle', 
-		'content_raw', 
+		'content_html', 
 		'page_image', 
 		'meta_description',
 		'layout', 
@@ -45,11 +45,11 @@ class Post extends Model
 	public function setTitleAttribute($value)
 	{
 		$this->attributes['title'] = $value;
-		//  若数据已经存在就不用设置slug这一行了，故编辑文章标题的时候不会调用该函数……
-// 		if (! $this->exists) {
+		//  若数据已经存在就不用设置slug这一行了，故更新文章标题的时候不会调用该函数……
+ 		if (! $this->exists) {
 			$translug = new Translug(['keyfrom'=>config('meblog.youdao.key_from'), 'key'=>config('meblog.youdao.api_key')]);			
 			$this->setUniqueSlug($value, $translug);
-// 		}
+ 		}
 	}
 	
 	/**
@@ -76,13 +76,13 @@ class Post extends Model
 	 * 
 	 * @param string $value
 	 */
-	public function setContentRawAttribute($value)
-	{
-		$markdown = new Markdowner();
+// 	public function setContentRawAttribute($value)
+// 	{
+// 		$markdown = new Markdowner();
 	
-		$this->attributes['content_raw'] = $value;
-		$this->attributes['content_html'] = $markdown->toHTML($value);
-	}
+// 		$this->attributes['content_raw'] = $value;
+// 		$this->attributes['content_html'] = $markdown->toHTML($value);
+// 	}
 	
 	/**
 	 * Sync tag relation adding new tags as needed
@@ -125,7 +125,7 @@ class Post extends Model
 	 */
 	public function getContentAttribute($value)
 	{
-		return $this->content_raw;
+		return $this->content_html;
 	}
 	
 	/**

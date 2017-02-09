@@ -19,6 +19,7 @@
         <link href="/assets/css/admin.css" rel="stylesheet">
         
         @yield('styles')
+        @yield('heads')
 
         <!--[if lt IE 9]>
             <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>

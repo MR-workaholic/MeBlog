@@ -3,6 +3,10 @@
   'meta_description' => $post->meta_description ?: config('meblog.description'),
 ])
 
+@section('headscripts')
+	<script src="/laravel-u-editor/ueditor.parse.js"></script>
+@stop
+
 @section('page-header')
   <header class="intro-header"
           style="background-image: url('{{ page_image($post->page_image) }}')">
@@ -32,7 +36,7 @@
   <article>
     <div class="container">
       <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1" id="post_content">
           {!! $post->content_html !!}
         </div>
       </div>
@@ -82,4 +86,12 @@
     </div>
 
   </div>
+@stop
+
+@section('scripts')
+<script>
+    uParse('#post_content', {
+        rootPath: '/laravel-u-editor'
+    });
+</script>
 @stop

@@ -54,7 +54,11 @@
                 Content
             </label>
             <div class="col-md-10">
-                 <textarea class="form-control" name="content" rows="14" id="content">{{ $content }}</textarea>
+            <!-- <textarea class="form-control" name="content" rows="14" id="content">{{ $content }}</textarea> -->                 
+                 <!-- 加载编辑器的容器 -->
+				<script id="container" name="content" type="text/plain">
+					{!! $content !!}
+				</script>
             </div>
         </div>
     </div>

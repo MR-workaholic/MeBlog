@@ -12,7 +12,8 @@
         "dflydev/apache-mime-types": "^1.0",
         "doctrine/dbal": "^2.5",
         "jellybool/translug": "^1.0",
-        "suin/php-rss-writer": "^1.5"
+        "suin/php-rss-writer": "^1.5",
+        "stevenyangecho/laravel-u-editor": "~1.4"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
