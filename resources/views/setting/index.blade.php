@@ -9,12 +9,21 @@
 				</div>
 				<!-- Display Validation Errors -->
 				@include('layouts.partials.success')
+				@if (count( $errors ) > 1 && ($errors->has('name') || $errors->has('email')))
+				<div class="alert alert-danger">
+		        	<ul>
+			        @foreach ($errors->all() as $error)
+			            <li>{{ $error }}</li>
+			        @endforeach
+				    </ul>
+			    </div>				
+				@endif
 				
 				<div class="panel-body">
 					<!-- New Task Form -->
 					<form action="{{ url('/setting/userinfo') }}" method="POST" class="form-horizontal">
 						{{ csrf_field() }}
-
+						
 						<!-- UserName -->
 						<div class="form-group">
 							<label for="username" class="col-sm-3 control-label">User Name</label>
@@ -23,13 +32,11 @@
 								<input type="text" name="name" class="form-control" value="{{ $name }}">
 							</div>							
 						</div>
-						@if ( $errors->has('name') )
+						@if ( count( $errors ) == 1 && $errors->has('name') )
 							<div class="alert alert-danger">
 								<span class="glyphicon glyphicon-arrow-up"></span>
 					        	<ul>
-						        @foreach ($errors->all() as $error)
-						            <li>{{ $error }}</li>
-						        @endforeach
+						            <li>{{ $errors->first() }}</li>
 							    </ul>
 						    </div>
 						@endif						
@@ -42,14 +49,10 @@
 								<input type="email" name="email" class="form-control" value="{{ $email }}">
 							</div>
 						</div>
-						@if ( $errors->has('email') )
+						@if ( count( $errors ) == 1 && $errors->has('email') )
 							<div class="alert alert-danger">
 								<span class="glyphicon glyphicon-arrow-up"></span>
-					        	<ul>
-						        @foreach ($errors->all() as $error)
-						            <li>{{ $error }}</li>
-						        @endforeach
-							    </ul>
+								<span>{{ $errors->first() }}</span>
 						    </div>
 						@endif						
 						
@@ -74,6 +77,15 @@
 				<div class="panel-heading">
 					Password Modification
 				</div>
+				@if (count( $errors ) > 1 && ($errors->has('oldpassword') || $errors->has('newpassword')))
+				<div class="alert alert-danger">
+		        	<ul>
+			        @foreach ($errors->all() as $error)
+			            <li>{{ $error }}</li>
+			        @endforeach
+				    </ul>
+			    </div>				
+				@endif
 
 				<div class="panel-body">
 					<!-- New Task Form -->
@@ -88,14 +100,10 @@
 								<input type="password" name="oldpassword" class="form-control" placeholder="Old Password">
 							</div>
 						</div>
-						@if ( $errors->has('oldpassword') )
+						@if ( count( $errors ) == 1 && $errors->has('oldpassword') )
 							<div class="alert alert-danger">
 								<span class="glyphicon glyphicon-arrow-up"></span>
-					        	<ul>
-						        @foreach ($errors->all() as $error)
-						            <li>{{ $error }}</li>
-						        @endforeach
-							    </ul>
+								<span>{{ $errors->first() }}</span>
 						    </div>
 						@endif	
 						
@@ -107,14 +115,10 @@
 								<input type="password" name="newpassword" class="form-control" placeholder="New Password">
 							</div>
 						</div>
-						@if ( $errors->has('newpassword') )
+						@if ( count( $errors ) == 1 && $errors->has('newpassword') )
 							<div class="alert alert-danger">
 								<span class="glyphicon glyphicon-arrow-up"></span>
-					        	<ul>
-						        @foreach ($errors->all() as $error)
-						            <li>{{ $error }}</li>
-						        @endforeach
-							    </ul>
+								<span>{{ $errors->first() }}</span>
 						    </div>
 						@endif
 						
