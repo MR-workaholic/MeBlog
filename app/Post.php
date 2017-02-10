@@ -43,13 +43,12 @@ class Post extends Model
 	 * @param string $value
 	 */
 	public function setTitleAttribute($value)
-	{
-		$this->attributes['title'] = $value;
-		//  若数据已经存在就不用设置slug这一行了，故更新文章标题的时候不会调用该函数……
- 		if (! $this->exists) {
+	{		
+ 		if (! $this->exists || ($this->exists && $this->attributes['title'] != $value)) {
 			$translug = new Translug(['keyfrom'=>config('meblog.youdao.key_from'), 'key'=>config('meblog.youdao.api_key')]);			
 			$this->setUniqueSlug($value, $translug);
  		}
+ 		$this->attributes['title'] = $value;
 	}
 	
 	/**
