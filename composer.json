@@ -13,7 +13,9 @@
         "doctrine/dbal": "^2.5",
         "jellybool/translug": "^1.0",
         "suin/php-rss-writer": "^1.5",
-        "stevenyangecho/laravel-u-editor": "~1.4"
+        "stevenyangecho/laravel-u-editor": "~1.4",
+        "overtrue/wechat": "~3.1",
+        "overtrue/laravel-wechat": "~3.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

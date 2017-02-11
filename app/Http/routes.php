@@ -58,6 +58,10 @@ Route::get('/auth/logout', 'Auth\AuthController@getLogout');
 Route::get('/setting', 'SettingController@index');
 Route::post('/setting/userinfo', 'SettingController@modifyUserInfo');
 Route::post('/setting/passwordinfo', 'SettingController@modifyPassword');
+
+// wechat
+Route::get('/wechat', 'WechatController@authentication'); //微信认证
+Route::post('/wechat', 'WechatController@handlemessage'); //接收用户信息
 	
 	
 	
