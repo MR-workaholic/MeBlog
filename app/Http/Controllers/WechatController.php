@@ -32,10 +32,42 @@ class WechatController extends Controller
 		$wechat = app('wechat');  //获取SDK服务的方式一
 		$server = $wechat->server;
 		$server->setMessageHandler(function($message) use ($wechat){
-			$openId = $message->FromUserName; // 用户的 openid
-			$userService = $wechat->user;
-			$user = $userService->get($openId);
-			return $user->nickname.",欢迎您关注【树多多事多】！";
+			$openId = $message->FromUserName; // 用户的 openid	
+			$msgType = $message->MsgType;		
+//			api unauthorized hint出现这个错误是微信没有授权，现在没有获取用户信息的权限，故使用下面的语句会出错
+// 			$user = $wechat->user->get($openId);
+
+			switch ($msgType)
+			{
+				case 'text':
+					$msgResponse = "你发送的消息是:[".$message->Content."]";
+					break;
+				case 'image':
+					$msgResponse = "你发送的图片是:[".$message->PicUrl."]";
+					break;
+				case 'voice':
+					$msgResponse = "你发送的语音id是:[".$message->MediaId."]以及格式是：[".$message->Format."]";
+					break;
+				case 'video':
+					$msgResponse = "你发送的视频id是:[".$message->MediaId."]以及缩略图媒体id是：[".$message->ThumbMediaId."]";
+					break;
+				case 'shortvideo':
+					$msgResponse = "你发送的小视频id是:[".$message->MediaId."]以及缩略图媒体id是：[".$message->ThumbMediaId."]";
+					break;
+				case 'location':
+					$msgResponse = "你发送的地理位置纬度是:[".$message->Location_X."]以及地理位置经度是：[".$message->Location_Y."]以及地理位置信息是[".$message->Label.']';
+					break;
+				case 'location':
+					$msgResponse = "你发送的地理位置纬度是:[".$message->Location_X."]以及地理位置经度是：[".$message->Location_Y."]以及地理位置信息是[".$message->Label.']';
+					break;
+				case 'link':
+					$msgResponse = "你发送的消息标题是:[".$message->Title."]以及消息描述是：[".$message->Description."]以及消息链接是[".$message->Url.']';
+					break;
+				default: 
+					$msgResponse = null;
+					break;
+			}
+			return $msgResponse;
 		});
 	
 		Log::info('return response.');
