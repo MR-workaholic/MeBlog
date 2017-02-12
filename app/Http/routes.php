@@ -61,7 +61,8 @@ Route::post('/setting/passwordinfo', 'SettingController@modifyPassword');
 
 // wechat
 Route::get('/wechat', 'WechatController@authentication'); //微信认证
-Route::post('/wechat', 'WechatController@handlemessage'); //接收用户信息
+Route::post('/wechat', 'WechatController@handlemMessage'); //接收用户信息
+Route::get('/wechat/menu', 'WechatController@menu'); //接收用户信息
 	
 	
 	
