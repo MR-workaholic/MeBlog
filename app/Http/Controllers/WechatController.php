@@ -133,7 +133,7 @@ class WechatController extends Controller
 								'title' => '登陆博客管理员', 
 								'description' => '登陆博客管理员，进行博客的发布吧',
 								'image' => 'http://119.29.171.68/uploads/CleanBlog/home-bg.jpg',
-								'url' => 'http://119.29.171.68/auth/loging',
+								'url' => 'http://119.29.171.68/auth/login',
 							]);
 							break;
 						default:
