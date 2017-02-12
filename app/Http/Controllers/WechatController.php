@@ -177,7 +177,7 @@ class WechatController extends Controller
 		// 		$wechatUser = EasyWeChat::user(); // 用户服务
 		$menu = EasyWeChat::menu();
 		Log::info("start add menu");
-		$menu->add($this->buttons);
+		$menu->add($this->buttons);  //没有权限，api unauthorized hint
 		return Redirect::back()->withMessage('菜单设置成功！');
 		
 	}
