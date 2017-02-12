@@ -114,7 +114,32 @@ class WechatController extends Controller
 				case 'text':
 // 					$msgResponse = "你发送的消息是:[".$message->Content."]";
 					//方式一：
-					$msgResponse = new Message\Text(['content' => "你发送的消息是:[".$message->Content."]你的ID是[".$openId."]"]);
+					switch ($message->Content)
+					{
+						case 'blog':
+						case '博客':
+						case '我的博客':
+							$msgResponse = new Message\News([
+								'title' => '我的博客', 
+								'description' => '快点击我美丽的博客吧',
+								'image' => 'http://119.29.171.68/uploads/CleanBlog/post-bg.jpg',
+								'url' => 'http://119.29.171.68/blog',
+							]);
+							break;
+						case 'admin':
+						case '管理员':
+						case '登陆博客':
+							$msgResponse = new Message\News([
+								'title' => '登陆博客管理员', 
+								'description' => '登陆博客管理员，进行博客的发布吧',
+								'image' => 'http://119.29.171.68/uploads/CleanBlog/home-bg.jpg',
+								'url' => 'http://119.29.171.68/auth/loging',
+							]);
+							break;
+						default:
+							$msgResponse = new Message\Text(['content' => "你发送的消息是:[".$message->Content."]你的ID是[".$openId."]"]);
+							break;
+					}
 					break;
 				case 'image':
 // 					$msgResponse = "你发送的图片是:[".$message->PicUrl."]";
@@ -129,12 +154,12 @@ class WechatController extends Controller
 					$msgResponse->media_id = $message->MediaId;
 					break;
 				case 'video':
-					$msgResponse = "你发送的视频id是:[".$message->MediaId."]以及缩略图媒体id是：[".$message->ThumbMediaId."]";
+// 					$msgResponse = "你发送的视频id是:[".$message->MediaId."]以及缩略图媒体id是：[".$message->ThumbMediaId."]";
 					//方式三：
-// 					$msgResponse = new Message\Video();
-// 					$msgResponse->setAttribute('title', '给回你的视频');
-// 					$msgResponse->setAttribute('description', '这是你的视频，现在给回你的视频');
-// 					$msgResponse->setAttribute('media_id', $message->MediaId);
+					$msgResponse = new Message\Video();
+					$msgResponse->setAttribute('title', '给回你的视频');
+					$msgResponse->setAttribute('description', '这是你的视频，现在给回你的视频');
+					$msgResponse->setAttribute('media_id', $message->MediaId);
 // 					$msgResponse->setAttribute('thumb_media_id', $message->ThumbMediaId);
 					break;
 				case 'shortvideo':
