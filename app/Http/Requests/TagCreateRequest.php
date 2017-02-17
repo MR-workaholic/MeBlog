@@ -24,10 +24,11 @@ class TagCreateRequest extends Request
     public function rules()
     {
         return [
-            'tag' => 'required|unique:tags,tag',
-            'title' => 'required',
+            'tag'      => 'required|unique:tags,tag',
+            'title'    => 'required',
             'subtitle' => 'required',
-            'layout' => 'required',
+            'level'    => 'required',
+            'layout'   => 'required',
         ];
     }
 }

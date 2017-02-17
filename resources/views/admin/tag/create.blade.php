@@ -1,5 +1,10 @@
 @extends('layouts.layout')
 
+@section('styles')
+    <link href="/assets/selectize/css/selectize.css" rel="stylesheet">
+    <link href="/assets/selectize/css/selectize.bootstrap3.css" rel="stylesheet">
+@stop
+
 @section('content')
 <div class="container-fluid">
     <div class="row page-title-row">
@@ -46,5 +51,16 @@
         </div>
     </div>
 </div>
+@stop
 
+@section('scripts')
+<script src="/assets/selectize/selectize.min.js"></script>
+<script>
+$(function() {
+    $("#belog_to").selectize({
+        create: false,
+        allowEmptyOption: true,
+    });
+});
+</script>
 @stop

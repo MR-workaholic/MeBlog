@@ -17,6 +17,46 @@
 </div>
 
 <div class="form-group">
+    <label for="level" class="col-md-3 control-label">
+        Level
+    </label>
+    <div class="col-md-7">
+        <label class="radio-inline">
+            <input type="radio" name="level" id="level"
+                    @if (! $level)
+                        checked="checked"
+                    @endif
+                     value="0"> 
+            First-level
+        </label>
+        <label class="radio-inline">
+            <input type="radio" name="level"
+                @if ($level)
+                    checked="checked"
+                @endif
+                value="1"> 
+            Second-level
+        </label>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="belog_to" class="col-md-3 control-label">
+        First-level Tags
+    </label>
+    <div class="col-md-8" id="select_parent">
+		<select name="belog_to" id="belog_to" class="form-control" placeholder="Select a first-level tag if this is a second-level tag">
+			<option value="">Select a first-level tag if this is a second-level tag</option>
+			@foreach ($allFirstLevelTags as $tag)
+			<option @if ($belog_to == $tag) selected @endif value="{{ $tag }}">
+				{{ $tag }}
+			</option>
+			@endforeach
+		</select>
+	</div>
+</div>
+
+<div class="form-group">
     <label for="meta_description" class="col-md-3 control-label">
         Meta Description
     </label>

@@ -9,7 +9,9 @@ class Tag extends Model
 	protected $fillable = [
 		'tag', 
 		'title', 
-		'subtitle', 
+		'subtitle',
+		'level',
+		'belog_to', 
 		'page_image', 
 		'meta_description',
 		'reverse_direction',
@@ -24,6 +26,21 @@ class Tag extends Model
 	{
 		return $this->belongsToMany('App\Post', 'post_tag_pivot');
 	}
+	
+	/**
+	 * Set the level attribute and automatically the belog_to attribute
+	 * 
+	 * @param int $value
+	 */
+	public function setLevelAttribute($value)
+	{
+		$this->attributes['level'] = $value;
+		if ($value == 0)
+		{
+			$this->attributes['belog_to'] = '';
+		}
+	}
+	
 	
 	/**
 	 * Add any tags needed from the list
