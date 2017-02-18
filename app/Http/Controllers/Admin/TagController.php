@@ -24,15 +24,17 @@ class TagController extends Controller
 		'belog_to' => 'other',
 		'meta_description' => '',
 		'page_image' => '',
+		'icon' => 'glyphicon glyphicon-paperclip',
 		'layout' => 'blog.layouts.index',
 		'reverse_direction' => 0,
 	];
 	
 	protected $rules = [
-		'title'    => 'required',
-		'subtitle' => 'required',
-		'level'    => 'required',
-		'layout'   => 'required',
+		'title'      => 'required',
+		'subtitle'   => 'required',
+		'level'      => 'required',
+		'icon'       => 'required',
+		'layout'     => 'required',
 	];
     /**
      * Display a listing of the resource.
@@ -120,7 +122,7 @@ class TagController extends Controller
     	foreach (array_keys($this->fields) as $field) {
     		$data[$field] = old($field, $tag->$field);
     	}
-    	$data['allFirstLevelTags'] = Tag::where('level', '=', 0)->lists('tag')->all();
+    	$data['allFirstLevelTags'] = Tag::where('level', '=', 0)->where('tag', '!=', $tag->tag)->lists('tag')->all();
     	
     	return view('admin.tag.edit', $data);
     }

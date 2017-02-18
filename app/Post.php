@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Services\Markdowner;
 use Carbon\Carbon;
 use JellyBool\Translug\Translug;
+use App\Tag;
 
 class Post extends Model
 {
@@ -75,13 +76,13 @@ class Post extends Model
 	 * 
 	 * @param string $value
 	 */
-// 	public function setContentRawAttribute($value)
-// 	{
-// 		$markdown = new Markdowner();
+	public function setContentHtmlAttribute($value)
+	{
+		$markdown = new Markdowner();
 	
 // 		$this->attributes['content_raw'] = $value;
-// 		$this->attributes['content_html'] = $markdown->toHTML($value);
-// 	}
+		$this->attributes['content_html'] = $markdown->toHTML($value);
+	}
 	
 	/**
 	 * Sync tag relation adding new tags as needed
@@ -94,12 +95,26 @@ class Post extends Model
 		
 		// 将文章与标签对应一起
 		if (count($tags)) {
+			$addTags = array();
+			foreach ($tags as $tag)
+			{
+				$checkTag = Tag::whereTag($tag)->first();
+				if ($checkTag->level == 1 && !in_array($checkTag->belog_to, $tags))
+				{
+					array_push($addTags, $checkTag->belog_to);
+				}
+			}
+			if (count($addTags))
+			{
+				$tags = array_merge($tags, $addTags);
+			}
+			// 任何不在给定数组中的IDs将会从中介表中被删除
 			$this->tags()->sync(
 					Tag::whereIn('tag', $tags)->lists('id')->all()
 			);
 			return;
 		}
-		//无标签则 用detach删除对应关系
+		//无标签则 用detach删除所有对应关系
 		$this->tags()->detach();
 	}
 	

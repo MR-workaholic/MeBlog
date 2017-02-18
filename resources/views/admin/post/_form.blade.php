@@ -1,10 +1,10 @@
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-9">
         <div class="form-group">
             <label for="title" class="col-md-2 control-label">
                 Title
             </label>
-            <div class="col-md-10">
+            <div class="col-md-7">
                 <input type="text" class="form-control" name="title" autofocus id="title" value="{{ $title }}">
             </div>
         </div>
@@ -62,7 +62,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
         <div class="form-group">
             <label for="publish_date" class="col-md-3 control-label">
                 Pub Date

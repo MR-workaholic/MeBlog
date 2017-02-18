@@ -19,19 +19,22 @@
 	        <li>
 	            <a href="/"><span class="glyphicon glyphicon-home"></span> Home</a>
 	        </li>
-	        @if (count($tags)>0)
-	        <li class="dropdown">
-	            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" 
-	                    aria-expanded="false">
-	                <span class="glyphicon glyphicon-paperclip"></span> Tags                
-	                <span class="caret"></span>
-	            </a>
-	            <ul class="dropdown-menu" role="menu">
-	            	@foreach($tags as $tag)
-	                <li><a href="{{ url('blog?tag='.$tag->tag) }}" style="color:black"> {{ $tag->title }}</a></li>
-	            	@endforeach
-	            </ul>
-        	</li>
+	        @if (count($first_level_tags)>0)
+	        	@foreach($first_level_tags as $first_level_tag)
+		        <li class="dropdown">
+		            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" 
+		                    aria-expanded="false">
+		                <span class="{{ $first_level_tags_icons[$first_level_tag] }}"></span> {{ $first_level_tag }}                
+		                <span class="caret"></span>
+		            </a>		            
+		            <ul class="dropdown-menu" role="menu">
+		            	<li><a href="{{ url('blog?tag='.$first_level_tag) }}" style="color:black"> {{ $first_level_tag."总览" }}</a></li>
+		            	@foreach($second_level_tags[$first_level_tag] as $second_level_tag)
+		                <li><a href="{{ url('blog?tag='.$second_level_tag) }}" style="color:black"> {{ $second_level_tag }}</a></li>
+		            	@endforeach
+		            </ul>		        
+	        	</li>
+	        	@endforeach
         	@endif	        
 	    </ul>
 	    <ul class="nav navbar-nav navbar-right">

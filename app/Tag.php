@@ -12,7 +12,8 @@ class Tag extends Model
 		'subtitle',
 		'level',
 		'belog_to', 
-		'page_image', 
+		'page_image',
+		'icon', 
 		'meta_description',
 		'reverse_direction',
 	];
@@ -61,6 +62,8 @@ class Tag extends Model
 					'tag' => $tag,
 					'title' => $tag,
 					'subtitle' => 'Subtitle for '.$tag,
+					'level' => 1,
+					'belog_to' => 'other',
 					'page_image' => '',
 					'meta_description' => '',
 					'reverse_direction' => false,

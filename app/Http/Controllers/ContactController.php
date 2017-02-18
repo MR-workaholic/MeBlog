@@ -7,7 +7,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ContactMeRequest;
 use Illuminate\Support\Facades\Mail;
-use App\Tag;
+use App\Services\TagsManager;
 
 class ContactController extends Controller
 {
@@ -18,8 +18,14 @@ class ContactController extends Controller
 	 */
 	public function showForm()
 	{
-		$tags = Tag::all();
-		return view('blog.contact')->withTags($tags);
+		$firstleveltags = TagsManager::getFirstLevelTags();
+		$secondleveltags = TagsManager::getSecondLevelTags($firstleveltags);
+		$firstleveltagsicons = TagsManager::getFirstLevelTagsIcons($firstleveltags);
+		
+		$data['first_level_tags'] = $firstleveltags;
+		$data['second_level_tags'] = $secondleveltags;
+		$data['first_level_tags_icons'] = $firstleveltagsicons;
+		return view('blog.contact', $data);
 	}
 	
 	/**

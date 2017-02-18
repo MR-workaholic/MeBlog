@@ -51,6 +51,7 @@ $factory->define(App\Post::class, function ($faker) {
 			'tag' => $word,
 			'title' => ucfirst($word),
 			'subtitle' => $faker->sentence,
+			'level' => 0,
 			'page_image' => 'CleanBlog/'.$images[mt_rand(0, 3)],
 			'meta_description' => "Meta for $word",
 			'reverse_direction' => false,

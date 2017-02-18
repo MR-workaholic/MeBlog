@@ -77,6 +77,18 @@
 </div>
 
 <div class="form-group">
+    <label for="page_image" class="col-md-3 control-label">
+        Icon
+    </label>
+    <div class="col-md-5">
+        <input type="text" class="form-control" name="icon" id="icon" value="{{ $icon }}">
+    </div>
+    <div class="col-md-3">
+        <span class="{{ $icon }}"></span>
+    </div>
+</div>
+
+<div class="form-group">
     <label for="layout" class="col-md-3 control-label">
         Layout
     </label>
