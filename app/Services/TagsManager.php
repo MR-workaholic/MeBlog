@@ -12,6 +12,7 @@ class TagsManager
 	
 	public static function getSecondLevelTags($firstLevelTags)
 	{
+		$secondLevelTags = array();
 		foreach ($firstLevelTags as $tag)
 		{
 			$secondLevelTags[$tag] = Tag::where('belog_to', '=', $tag)->lists('tag')->all();
