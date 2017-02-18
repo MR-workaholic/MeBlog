@@ -22,6 +22,7 @@ class TagsManager
 	
 	public static function getFirstLevelTagsIcons($firstLevelTags)
 	{
+		$firstLevelTagsIcons = array();
 		foreach ($firstLevelTags as $tag)
 		{
 			$firstLevelTagsIcons[$tag] = Tag::where('tag', '=', $tag)->lists('icon')->first();
