@@ -2,7 +2,7 @@
     <div class="col-md-9">
         <div class="form-group">
             <label for="title" class="col-md-2 control-label">
-                Title
+                *Title
             </label>
             <div class="col-md-7">
                 <input type="text" class="form-control" name="title" autofocus id="title" value="{{ $title }}">
@@ -10,7 +10,7 @@
         </div>
         <div class="form-group">
             <label for="subtitle" class="col-md-2 control-label">
-                Subtitle
+                *Subtitle
             </label>
             <div class="col-md-10">
                 <input type="text" class="form-control" name="subtitle" id="subtitle" value="{{ $subtitle }}">
@@ -51,7 +51,7 @@
         </div>
         <div class="form-group">
             <label for="content" class="col-md-2 control-label">
-                Content
+                *Content
             </label>
             <div class="col-md-10">
             <!-- <textarea class="form-control" name="content" rows="14" id="content">{{ $content }}</textarea> -->                 
@@ -65,7 +65,7 @@
     <div class="col-md-3">
         <div class="form-group">
             <label for="publish_date" class="col-md-3 control-label">
-                Pub Date
+                *Pub Date
             </label>
             <div class="col-md-8">
                 <input class="form-control" name="publish_date" id="publish_date" type="text" value="{{ $publish_date }}">
@@ -73,7 +73,7 @@
         </div>
         <div class="form-group">
             <label for="publish_time" class="col-md-3 control-label">
-                Pub Time
+                *Pub Time
             </label>
             <div class="col-md-8">
                 <input class="form-control" name="publish_time" id="publish_time" type="text" value="{{ $publish_time }}">
@@ -105,7 +105,7 @@
         </div>
         <div class="form-group">
             <label for="layout" class="col-md-3 control-label">
-                Layout
+                *Layout
             </label>
             <div class="col-md-8">
                 <input type="text" class="form-control" name="layout" id="layout" value="{{ $layout }}">

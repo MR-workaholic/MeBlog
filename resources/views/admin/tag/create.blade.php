@@ -31,6 +31,9 @@
                                 <div class="col-md-3">
                                     <input type="text" class="form-control" name="tag" id="tag" value="{{ $tag }}" autofocus>
                                 </div>
+                                <div class="col-md-4">
+    								<p class="form-control-static">Tag不能带中文与特殊符号</p>
+    							</div>
                             </div>
 
                             @include('admin.tag._form')
