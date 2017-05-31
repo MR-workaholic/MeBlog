@@ -12,6 +12,7 @@ use App\Tag;
 use App\Http\Requests\TagCreateRequest;
 use App\Http\Requests\TagUpdateRequest;
 use Illuminate\Support\Facades\Validator;
+use App\Services\TagsManager;
 
 class TagController extends Controller
 {
@@ -22,6 +23,7 @@ class TagController extends Controller
 		'subtitle' => '',
 		'level' => 1,
 		'belog_to' => 'other',
+		'show_order' => 0,
 		'meta_description' => '',
 		'page_image' => '',
 		'icon' => 'glyphicon glyphicon-paperclip',
@@ -33,6 +35,7 @@ class TagController extends Controller
 		'title'      => 'required',
 		'subtitle'   => 'required',
 		'level'      => 'required',
+		'show_order' => 'required',
 		'icon'       => 'required',
 		'layout'     => 'required',
 	];
@@ -79,9 +82,19 @@ class TagController extends Controller
     	
     	$level = $request->get('level');
     	$belog_to = $request->get('belog_to');
-    	$validator->after(function($validator) use ($level, $belog_to) {
+    	$show_order = $request->get('show_order');
+    	$validator->after(function($validator) use ($level, $belog_to, $show_order) {
     		if ($level == 1 && $belog_to == "") { // 若设置为二级目录，必须有一个对应的一级目录
     			$validator->errors()->add('belog_to', 'Select a first-level tag if this is a second-level tag'); //错误的话显示错误信息
+    		}
+    		if ($level == 0){
+    			if ($show_order == 0){
+    				$validator->errors()->add('show_order', 'Set a  nonzero number if this is a first-level tag'); //错误的话显示错误信息
+    			}
+    			if (!TagsManager::checkShowOrderUnique($show_order)){
+    				$validator->errors()->add('show_order', 'Set a unique  number if this is a first-level tag'); //错误的话显示错误信息
+    			}
+    			
     		}
     	});
     	if ($validator->fails()) {      //判断是否有错误

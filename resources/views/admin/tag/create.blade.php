@@ -27,7 +27,7 @@
                         	{{ csrf_field() }}
 
                             <div class="form-group">
-                                <label for="tag" class="col-md-3 control-label">Tag</label>
+                                <label for="tag" class="col-md-3 control-label">*Tag</label>
                                 <div class="col-md-3">
                                     <input type="text" class="form-control" name="tag" id="tag" value="{{ $tag }}" autofocus>
                                 </div>

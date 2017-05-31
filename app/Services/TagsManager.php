@@ -7,7 +7,7 @@ class TagsManager
 {
 	public static function getFirstLevelTags()
 	{
-		return Tag::where('level', '=', '0')->lists('tag')->all();
+		return Tag::where('level', '=', '0')->orderBy('show_order')->lists('tag')->all();
 	}
 	
 	public static function getSecondLevelTags($firstLevelTags)
@@ -29,5 +29,13 @@ class TagsManager
 			// or Tag::whereTag($tag)->first()->icon;
 		}
 		return $firstLevelTagsIcons;
+	}
+	
+	public static function checkShowOrderUnique($showOrder)
+	{
+		if (Tag::where('show_order', '=', $showOrder)->exists()){
+			return false;
+		}
+		return true;
 	}
 }

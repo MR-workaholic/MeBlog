@@ -27,6 +27,7 @@
                             <th class="hidden-sm">Subtitle</th>
                             <th class="hidden-md">Level</th>
                             <th class="hidden-md">Belog To</th>
+                            <th class="hidden-md">Show Order</th>
                             <th class="hidden-md">Page Image</th>
                             <th class="hidden-md">Icon</th>
                             <th class="hidden-md">Meta Description</th>
@@ -43,6 +44,7 @@
                             <td class="hidden-sm">{{ $tag->subtitle }}</td>
                             <td class="hidden-md">{{ $tag->level }}</td>
                             <td class="hidden-md">{{ $tag->belog_to }}</td>
+                            <td class="hidden-md">{{ $tag->show_order }}</td>
                             <td class="hidden-md">{{ $tag->page_image }}</td>
                             <td class="hidden-md"><span class="{{ $tag->icon }}"></span></td>
                             <td class="hidden-md">{{ $tag->meta_description }}</td>

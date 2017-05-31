@@ -11,7 +11,8 @@ class Tag extends Model
 		'title', 
 		'subtitle',
 		'level',
-		'belog_to', 
+		'belog_to',
+		'show_order',
 		'page_image',
 		'icon', 
 		'meta_description',
@@ -29,18 +30,38 @@ class Tag extends Model
 	}
 	
 	/**
-	 * Set the level attribute and automatically the belog_to attribute
+	 * Set the belog_to attribute 
 	 * 
 	 * @param int $value
 	 */
-	public function setLevelAttribute($value)
+	public function setBelogToAttribute($value)
 	{
-		$this->attributes['level'] = $value;
-		if ($value == 0)
+		
+		if ($this->attributes['level'] == 1)
 		{
+			$this->attributes['belog_to'] = $value;
+		}else{
 			$this->attributes['belog_to'] = '';
+		}	 
+	}
+	
+	/**
+	 * Set the show_order attribute
+	 *
+	 * @param int $value
+	 */
+	public function setShowOrderAttribute($value)
+	{
+	
+		if ($this->attributes['level'] == 1)
+		{
+			$this->attributes['show_order'] = 0;
+		}else{
+			$this->attributes['show_order'] = $value;
 		}
 	}
+	
+	
 	
 	
 	/**

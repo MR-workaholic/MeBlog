@@ -76,7 +76,7 @@ class Post extends Model
 	 * 
 	 * @param string $value
 	 */
-	public function setContentHtmlAttribute($value)
+	public function setContentHtmlAttribute($value)  //原本是输入MD输出HTML，详见MarkdownerTest文件
 	{
 		$markdown = new Markdowner();
 	

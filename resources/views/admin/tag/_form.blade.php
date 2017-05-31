@@ -1,6 +1,6 @@
 <div class="form-group">
     <label for="title" class="col-md-3 control-label">
-        Title
+        *Title
     </label>
     <div class="col-md-8">
         <input type="text" class="form-control" name="title" id="title" value="{{ $title }}">
@@ -9,7 +9,7 @@
 
 <div class="form-group">
     <label for="subtitle" class="col-md-3 control-label">
-        Subtitle
+        *Subtitle
     </label>
     <div class="col-md-8">
         <input type="text" class="form-control" name="subtitle" id="subtitle" value="{{ $subtitle }}">
@@ -57,6 +57,18 @@
 </div>
 
 <div class="form-group">
+    <label for="show_order" class="col-md-3 control-label">
+        *Show Order
+    </label>
+    <div class="col-md-4">
+        <input type="number" class="form-control" name="show_order" id="show_order" value="{{ $show_order }}">
+    </div>
+    <div class="col-md-4">
+    	<p class="form-control-static">Set a unique nonzero number if this is a first-level tag</p>
+    </div>
+</div>
+
+<div class="form-group">
     <label for="meta_description" class="col-md-3 control-label">
         Meta Description
     </label>
@@ -78,7 +90,7 @@
 
 <div class="form-group">
     <label for="page_image" class="col-md-3 control-label">
-        Icon
+        *Icon
     </label>
     <div class="col-md-5">
         <input type="text" class="form-control" name="icon" id="icon" value="{{ $icon }}">
@@ -90,7 +102,7 @@
 
 <div class="form-group">
     <label for="layout" class="col-md-3 control-label">
-        Layout
+        *Layout
     </label>
     <div class="col-md-4">
         <input type="text" class="form-control" name="layout" id="layout" value="{{ $layout }}">
