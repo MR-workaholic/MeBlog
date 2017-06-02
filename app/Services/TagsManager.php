@@ -38,4 +38,14 @@ class TagsManager
 		}
 		return true;
 	}
+	
+	public static function getFirstLevelTagsNameAndId(){
+		$names = Tag::where('level', '=', '0')->orderBy('show_order')->lists('tag')->all();
+		$result = array();
+		foreach ($names as $v){
+			//$result[$v] = Tag::where('tag', '=', $v)->get('id');
+			$result[$v] = Tag::where('tag', '=', $v)->firstOrFail()->id; //有待检查
+		}
+		return $result;
+	}
 }

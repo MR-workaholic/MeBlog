@@ -73,11 +73,11 @@ class BlogIndexData extends Job implements SelfHandling
     
     	$posts = Post::where('published_at', '<=', Carbon::now())
     	->whereHas('tags', function ($q) use ($tag) {
-    		$q->where('tag', '=', $tag->tag);
+    		$q->where('tag', '=', $tag->tag);	//见Post.php的L36
     	})
     	->where('is_draft', 0)
     	->orderBy('published_at', $reverse_direction ? 'asc' : 'desc')
-    	->simplePaginate(config('meblog.posts_per_page'));
+    	->simplePaginate(config('meblog.posts_per_page'));	//分页使用，供前端的分页模块使用，如blog.layouts.index
     	
     	$posts->addQuery('tag', $tag->tag);
     
@@ -86,7 +86,7 @@ class BlogIndexData extends Job implements SelfHandling
     	return [
 	    	'title' => $tag->title,		//虽然现在的title先登记的是tag的，但在blog.layouts.post会转为文章的title
 	    	'subtitle' => $tag->subtitle,
-	    	'posts' => $posts,
+	    	'posts' => $posts,        //posts是一个ORM对象，而不是数组??
 	    	'page_image' => $page_image,
 	    	'tag' => $tag,
 	    	'reverse_direction' => $reverse_direction,
