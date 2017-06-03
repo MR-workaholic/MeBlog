@@ -65,9 +65,12 @@ Route::post('/wechat', 'WechatController@handlemMessage'); //接收用户信息
 Route::get('/wechat/menu', 'WechatController@menu'); //接收用户信息
 
 //安卓client
-Route::get('getCategories', 'AndroidClientController@getCategories');
-Route::get('getSpecifyCategoryNews', 'AndroidClientController@getSpecifyCategoryNews');
-Route::get('getNews', 'AndroidClientController@getNews');
+Route::get('androidblog/getCategories', 'AndroidClientController@getCategories');
+Route::get('androidblog/getSpecifyCategoryNews', 'AndroidClientController@getSpecifyCategoryNews');
+Route::get('androidblog/getNews', 'AndroidClientController@getNews');
+Route::get('androidblog/getComments', 'AndroidClientController@getComments');
+Route::post('androidblog/postComment', 'AndroidClientController@postComment');
+
 
 	
 	

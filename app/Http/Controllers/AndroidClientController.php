@@ -9,7 +9,9 @@ use App\Http\Controllers\Controller;
 use App\Services\TagsManager;
 use App\Tag;
 use App\Post;
+use App\AndroidComment;
 use Carbon\Carbon;
+use App\Http\Requests\AndroidCommentRequest;
 
 
 class AndroidClientController extends Controller
@@ -105,4 +107,67 @@ class AndroidClientController extends Controller
     	return $result;
     	   	
     }
+    
+    public function getComments(Request $request){
+    	
+    	$startnid = $request->get('startnid');
+    	$count = $request->get('count');
+    	$nid = $request->get('nid');
+    	
+    	$comments = Post::find($nid)
+    	->androidcomments()
+    	->orderBy('created_at', 'asc')
+    	->get()
+    	->all();
+    	
+    	$partComments = array_slice($comments, $startnid, $count); //分页
+    	
+    	
+    	
+    	$commentslist = array();
+    	foreach ($partComments as $comment){
+    		$temp = array(
+    				'supportCount' => 0,
+    				'opposeCount' => 0,
+    				'region' => $comment->region,
+    				'ptime' => $comment->created_at->format('F j, Y'),
+    				'content' => $comment->content,
+    				'cid' => $comment->id			
+    		);
+    		$commentslist[] = $temp;
+    	}
+    	
+    	$data = array(
+    			'totalnum' => count($partComments),
+    			'commentslist' => $commentslist,
+    	);
+    	
+    	
+    	return [
+    		'ret' => 0,
+    		'msg' => 'ok',
+    		'data' => $data,
+    	];  	
+    }
+
+	public function postComment(AndroidCommentRequest $request){
+		
+		$data = $request->all();
+//		return [
+//    		'content' => $data['content'],
+//		];
+		AndroidComment::create(
+    		array(
+    			'post_id' => $data['nid'],
+    			'region' => $data['region'],
+    			'content' => $data['content'],
+    		)
+		);
+		
+		return [
+    			'ret' => 0,
+    			'msg' => 'ok',
+		];	
+		
+	}
 }

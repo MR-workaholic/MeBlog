@@ -39,6 +39,14 @@ class Post extends Model
 	}
 	
 	/**
+	 * 获取该日志的所有评论。
+	 */
+	public function androidcomments()
+	{
+		return $this->hasMany(AndroidComment::class);
+	}	
+	
+	/**
 	 * Set the title attribute and automatically the slug 若title字段被设置则自动调用该函数
 	 *
 	 * @param string $value
