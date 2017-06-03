@@ -63,7 +63,12 @@ class AndroidClientController extends Controller
     	foreach ($partPosts as $v){
     		
     		$temp = array();
-    		$temp['commentcount'] = 1;
+    		$temp['commentcount'] = count(
+    				Post::find($v->id)
+    				->androidcomments()
+    				->get()
+    				->all()
+    		);
     		$temp['nid'] = $v->id;
     		$temp['digest'] = $v->subtitle;
     		$temp['source'] = 'Me CZH Blog';
@@ -101,7 +106,12 @@ class AndroidClientController extends Controller
     	$news['title'] = $post->title;
     	$news['body'] = $post->content_html;
     	$news['ptime'] = $post->published_at->format('F j, Y');
-    	$news['replaycount'] = 10;
+    	$news['replaycount'] = count( 
+    			Post::find($nid)
+    			->androidcomments()
+    			->get()
+    			->all()
+    	);
     	
     	$result['data']['news'] = $news;
     	return $result;
