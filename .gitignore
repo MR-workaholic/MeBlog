@@ -1,5 +1,6 @@
 /vendor
 /node_modules
+/public/uploads/ueditor
 Homestead.yaml
 Homestead.json
 .env
