@@ -34,7 +34,7 @@
                     @foreach ($merchandises as $merchandise)
                         <tr>
                           <td class="hidden-sm">
-                            <button type="button" class="btn btn-xs btn-success" onclick="preview_image('{{ $merchandise->webpath }}')">
+                            <button type="button" class="btn btn-xs btn-success" onclick="preview_image('{{ $merchandise->webpath }}', '{{ $merchandise->content }}')">
                               <i class="fa fa-eye fa-lg"></i>
                               {{ $merchandise->src }}
                             </button>
@@ -73,7 +73,7 @@
           </div>
           <div class="modal-body">
             <img id="preview-image" src="x" class="img-responsive">
-            <div><span>{{ $merchandise->content }}</span></div>
+            <div><span id="preview-content"></span></div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">
@@ -93,8 +93,9 @@
      });
    });
    // 预览图片
-   function preview_image(path) {
+   function preview_image(path, content) {
      $("#preview-image").attr("src", path);
+     $("#preview-content").html(content);
      $("#modal-image-view").modal("show");
    }
 
