@@ -93,7 +93,7 @@ class MerchandiseTagController extends Controller
   public function edit($id)
   {
     //
-    $merchandisetag = MerchandiseTag::findOrfail($id);
+    $merchandisetag = MerchandiseTag::findOrFail($id);
     $data['id'] = $id;
     foreach(array_keys($this->fields) as $field)
     {
@@ -114,7 +114,7 @@ class MerchandiseTagController extends Controller
   public function update(Request $request, $id)
   {
     //
-    $merchandisetag = MerchandiseTag::findorfail($id);
+    $merchandisetag = MerchandiseTag::findOrFail($id);
     $data = $request->all();
     $validator = Validator::make($data, $this->rules);
 
@@ -151,5 +151,11 @@ class MerchandiseTagController extends Controller
   public function destroy($id)
   {
     //
+    $merchandisetag = MerchandiseTag::findOrFail($id);
+    /* 清除标签商品关系对应表 */
+    $merchandisetag->merchandises()->detach();
+    $merchandisetag->delete();
+
+    return redirect('/admin/merchandisetag')->withSuccess("The tag has been deleted");
   }
 }

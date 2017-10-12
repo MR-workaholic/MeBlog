@@ -76,7 +76,8 @@ class TagController extends Controller
 //     public function store(TagCreateRequest $request)
 	public function store(Request $request)  
     {
-    	$data = $request->all();
+        $data = $request->all();
+        // https://cs.laravel-china.org/#validation
     	$store_rules = array_merge(array('tag' => 'required|unique:tags,tag'), $this->rules);
     	$validator = Validator::make($data, $store_rules);
     	

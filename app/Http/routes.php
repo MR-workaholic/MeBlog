@@ -45,8 +45,11 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'auth'], function (){  //�
 	Route::post('admin/upload/file', 'UploadController@uploadFile');
 	Route::delete('admin/upload/file', 'UploadController@deleteFile');
 	Route::post('admin/upload/folder', 'UploadController@createFolder');
-	Route::delete('admin/upload/folder', 'UploadController@deleteFolder');
-	
+    Route::delete('admin/upload/folder', 'UploadController@deleteFolder');
+
+    Route::resource('admin/merchandisetag', 'MerchandiseTagController', ['except' => 'show']);
+    Route::resource('admin/merchandises', 'MerchandiseController', ['except' => 'show']);
+
 });
 
 // Logging in and out
@@ -71,6 +74,5 @@ Route::get('androidblog/getNews', 'AndroidClientController@getNews');
 Route::get('androidblog/getComments', 'AndroidClientController@getComments');
 Route::post('androidblog/postComment', 'AndroidClientController@postComment');
 
-
-	
-	
+// 商品展示
+Route::get('/merchandise', 'MerchandiseController@index');
