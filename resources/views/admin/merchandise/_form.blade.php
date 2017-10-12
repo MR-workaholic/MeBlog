@@ -1,5 +1,5 @@
 <div class="form-group">
-  <label for="src" class="col-md-3 control-label">*src</label>
+  <label for="src" class="col-md-3 control-label">*Src</label>
   <div class="col-md-3">
     <input type="text" class="form-control" name="src" id="src" @if($method == 'create') placeholder @else value @endif ="{{ $src }}" autofocus>
   </div>
@@ -7,12 +7,31 @@
 
 <div class="form-group">
   <label for="alt" class="col-md-3 control-label">
-    Brief Introduction
+    *Merchandise
   </label>
   <div class="col-md-8">
     <input type="text" class="form-control" name="alt" id="alt" @if($method == 'create') placeholder @else value @endif ="{{ $alt }}">
   </div>
 </div>
+
+<div class="form-group">
+  <label for="price" class="col-md-3 control-label">
+    *Price
+  </label>
+  <div class="col-md-8">
+    <input type="text" class="form-control" name="price" id="price" @if($method == 'create') placeholder @else value @endif ="{{ $price }}">
+  </div>
+</div>
+
+<div class="form-group">
+  <label for="content" class="col-md-3 control-label">
+    Describtion
+  </label>
+  <div class="col-md-8">
+    <input type="text" class="form-control" name="content" id="content" @if($method == 'create') placeholder @else value @endif ="{{ $content }}">
+  </div>
+</div>
+
 <div class="form-group">
   <label for="tags" class="col-md-3 control-label">
     *Tags

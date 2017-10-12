@@ -39,6 +39,7 @@ class MerchandiseData extends Job implements SelfHandling
     $merchandises = Merchandise::all();
     foreach($merchandises as $merchandise){
       $merchandise['tags'] = $merchandise->merchandisetags()->get();
+      $merchandise['webpath'] = url('uploads/merchandises/'.$merchandise['src'].'.jpg');
     }
 
     return $merchandises;

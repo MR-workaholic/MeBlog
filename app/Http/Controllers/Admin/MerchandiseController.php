@@ -17,12 +17,16 @@ class MerchandiseController extends Controller
 
   protected $fields = [
     'src' => '图片名',
-    'alt' => '图片介绍',
+    'alt' => '商品名',
+    'content' => '商品介绍',
+    'price' => '价格',
   ];
 
   protected $rules = [
     'src' => 'required',
+    'alt' => 'required',
     'tags' => 'required',
+    'price' => 'required',
   ];
 
   /**
@@ -127,7 +131,7 @@ class MerchandiseController extends Controller
    */
   public function update(Request $request, $id)
   {
-    //规则：src必须但不是独一无二，可以共享同一个图片
+    //规则：src必须但不是独一无二，可以共享同一图片
     $data = $request->all();
     $validator = Validator::make($data, $this->rules);
     if($validator->fails())
