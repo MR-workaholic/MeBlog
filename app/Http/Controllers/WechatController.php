@@ -128,6 +128,13 @@ class WechatController extends Controller
 							break;
 						case 'admin':
 						case '管理员':
+							$msgResponse = new Message\News([
+								'title' => '博客管理员', 
+								'description' => '博客管理员，进行博客的发布吧',
+								'image' => 'http://119.29.171.68/uploads/CleanBlog/home-bg.jpg',
+								'url' => 'http://119.29.171.68/admin',
+							]);
+							break;
 						case '登陆博客':
 							$msgResponse = new Message\News([
 								'title' => '登陆博客管理员', 
