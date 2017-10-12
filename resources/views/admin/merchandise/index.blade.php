@@ -26,7 +26,7 @@
                             <th>Name</th>
                             <th>Price</th>
                             <th>Tags</th>
-                            <th>Describtion</th>
+                            <th class="hidden-sm">Describtion</th>
                             <th data-sortable="false">Actions</th>
                         </tr>
                      </thead>
@@ -46,7 +46,7 @@
                                 <a href="{{ url("admin/merchandisetag/$tag->id/edit") }}">{{ $tag->tag }}</a>
                               @endforeach
                           </td>
-                          <td>{{ $merchandise->content }}</td>
+                          <td class="hidden-sm">{{ $merchandise->content }}</td>
                                 
                             <td>
                                 <a href="{{ url('admin/merchandises/'.$merchandise->id.'/edit') }}" class="btn btn-xs btn-info">
