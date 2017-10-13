@@ -76,3 +76,4 @@ Route::post('androidblog/postComment', 'AndroidClientController@postComment');
 
 // 商品展示
 Route::get('/merchandise', 'MerchandiseController@index');
+Route::get('/merchandise/wxcode', 'MerchandiseController@wxcode');

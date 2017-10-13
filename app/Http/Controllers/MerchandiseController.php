@@ -13,11 +13,19 @@ use App\Jobs\MerchandiseIndexData;
 
 class MerchandiseController extends Controller
 {
-    //
-    public function index(Request $request)
-    {
-        $data = $this->dispatch(new MerchandiseIndexData());
-        return view('merchandise.index', $data);
-        // return ['a', 'b', 'c'];
-    }
+  //
+  public function index(Request $request)
+  {
+    $data = $this->dispatch(new MerchandiseIndexData());
+    return view('merchandise.index', $data);
+    // return ['a', 'b', 'c'];
+  }
+
+  public function wxcode(Request $request){
+    $data = array(
+      'img' => '/uploads/xiaomei.jpg',
+    );
+    return view('merchandise.introduction', $data);
+    /*     return redirect('http://127.0.0.1/uploads/xiaomei.jpg');*/
+  }
 }

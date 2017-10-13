@@ -54,7 +54,7 @@
              <li data-tags="My Design"><img src="assets/img/shots/timgg.jpg" alt="Illustration" /></li> -->
       </ul>
     </section>
-    <p class="center">更多精彩内容请关注：<a href="http://www.htmleaf.com/" target="_blank">{{ $WXname }}</a></p>
+    <p class="center">更多精彩内容请关注：<a href="{{ url('merchandise/wxcode') }}" target="_blank">{{ $WXname }}</a></p>
     
     <script src="assets/merchandisejs/jquery-1.7.2.min.js"></script>
     <script src="assets/merchandisejs/jquery.quicksand.js"></script>
