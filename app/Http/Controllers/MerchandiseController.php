@@ -22,9 +22,8 @@ class MerchandiseController extends Controller
   }
 
   public function wxcode(Request $request){
-    $data = array(
-      'img' => '/uploads/xiaomei.jpg',
-    );
+    $data = config('merchandise.introduction');
+    // return $data;
     return view('merchandise.introduction', $data);
     /*     return redirect('http://127.0.0.1/uploads/xiaomei.jpg');*/
   }
