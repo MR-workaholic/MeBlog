@@ -2,7 +2,6 @@
 <hr>
 <div class="container">
   <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-    @include('blog.partials.uyan')
   </div>
 </div>
 @endif
@@ -22,7 +21,7 @@
             </a>
           </li>
         </ul>
-        <p class="copyright">Copyright © {{ config('meblog.author') }}</p>
+        <p class="copyright">Copyright © {{ config('meblog.author') }} <a href="http://www.miitbeian.gov.cn">  粤ICP备17142511号</a></p>
       </div>
     </div>
   </div>
