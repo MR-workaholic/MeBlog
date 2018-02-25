@@ -39,7 +39,7 @@
 	    </ul>
 	    <ul class="nav navbar-nav navbar-right">
 	        <li>
-	          <!-- <a href="/contact"><span class="glyphicon glyphicon-envelope"></span> Contact</a> -->
+	          <a href="/contact"><span class="glyphicon glyphicon-envelope"></span> Contact</a>
 	        </li>
 	    </ul>
 	</div>
