@@ -41,7 +41,7 @@ class WechatController extends Controller
 				[
 					"type" => "view",
 					"name" => "博客首页",
-					"url"  => "http://119.29.171.68/blog"
+					"url"  => "http://czhcm.com.cn/blog"
 				],
 				[
 					"type" => "view",
@@ -122,8 +122,8 @@ class WechatController extends Controller
 							$msgResponse = new Message\News([
 								'title' => '我的博客', 
 								'description' => '快点击我美丽的博客吧',
-								'image' => 'http://119.29.171.68/uploads/CleanBlog/post-bg.jpg',
-								'url' => 'http://119.29.171.68/blog',
+								'image' => 'http://czhcm.com.cn/uploads/CleanBlog/post-bg.jpg',
+								'url' => 'http://czhcm.com.cn/blog',
 							]);
 							break;
 						case 'admin':
@@ -131,16 +131,16 @@ class WechatController extends Controller
 							$msgResponse = new Message\News([
 								'title' => '博客管理员', 
 								'description' => '博客管理员，进行博客的发布吧',
-								'image' => 'http://119.29.171.68/uploads/CleanBlog/home-bg.jpg',
-								'url' => 'http://119.29.171.68/admin',
+								'image' => 'http://czhcm.com.cn/uploads/CleanBlog/home-bg.jpg',
+								'url' => 'http://czhcm.com.cn/admin',
 							]);
 							break;
 						case '登陆博客':
 							$msgResponse = new Message\News([
 								'title' => '登陆博客管理员', 
 								'description' => '登陆博客管理员，进行博客的发布吧',
-								'image' => 'http://119.29.171.68/uploads/CleanBlog/home-bg.jpg',
-								'url' => 'http://119.29.171.68/auth/login',
+								'image' => 'http://czhcm.com.cn/uploads/CleanBlog/home-bg.jpg',
+								'url' => 'http://czhcm.com.cn/auth/login',
 							]);
 							break;
 						default:
